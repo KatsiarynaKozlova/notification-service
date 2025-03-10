@@ -8,13 +8,13 @@
 <body>
     <div id="messages"></div>
     <script>
-        const userId = "1"; // Уникальный ID пользователя
+        const orderId = "1";
         const socket = new SockJS('http://localhost:8088/notifications');
         const stompClient = Stomp.over(socket);
 
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/delivery/' + userId + '/queue/messages', function (message) {
+            stompClient.subscribe('/delivery/' + orderId + '/queue/messages', function (message) {
                 const msg = message.body;
                 document.getElementById('messages').innerHTML += '<p>' + msg + '</p>';
             });
