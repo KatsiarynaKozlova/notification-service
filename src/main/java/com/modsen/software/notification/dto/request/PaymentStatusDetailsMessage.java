@@ -1,4 +1,6 @@
 package com.modsen.software.notification.dto.request;
 
-public record PaymentStatusDetailsMessage(Long id, String status, Long orderId) implements StatusDetailsMessage {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record PaymentStatusDetailsMessage(Long id, String status, @JsonProperty("order_id") Long orderId) implements StatusDetailsMessage {
 }
